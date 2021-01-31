@@ -120,36 +120,50 @@ union               primtive                        object                  inte
 // show account
 
 
-account = {
-    name :"ahmed",
-    income: 0,
-    taxes: 0
-}
-let addIncome = function(amount){
-    account.income += amount
-    account.taxes += (amount*0.1)
-}
-let resetAccount = function(){
-    account.income=0
-    account.taxes=0
-}
-let showAccount = function() {
- console.log(`
- account user is ${account.name}
- income = ${account.income}
- taxes = ${account.taxes}
- `)   
-}
-addIncome(500)
-showAccount()
-addIncome(500)
-showAccount()
-resetAccount()
-showAccount()
+// account = {
+//     name :"ahmed",
+//     income: 0,
+//     taxes: 0
+// }
+// let addIncome = function(amount){
+//     account.income += amount
+//     account.taxes += (amount*0.1)
+// }
+// let resetAccount = function(){
+//     account.income=0
+//     account.taxes=0
+// }
+// let showAccount = function() {
+//  console.log(`
+//  account user is ${account.name}
+//  income = ${account.income}
+//  taxes = ${account.taxes}
+//  `)   
+// }
+// addIncome(500)
+// showAccount()
+// addIncome(500)
+// showAccount()
+// resetAccount()
+// showAccount()
 
+// x = [1,2,3,4]
 
-
-
+// x.forEach(element => {
+//     element+=5
+//     console.log(element)
+// });
+// console.log(x)
+// for(i=0;i<x.length; i++){
+//     x[i]+=5
+//     console.log(x[i])
+// }
+// console.log(x)
+// x.push(5)
+// x.unshift(3)
+// console.log(x)
+// x.shift()
+// x.pop()
 
 
 
