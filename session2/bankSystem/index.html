@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
-    <section class="container my-5 text-center">
+    <section class="container my-5 text-center buttons">
         <button class="btn btn-primary" id="addbBtn">
             <span>Add Customer
             </span>
@@ -19,18 +19,18 @@
         <button class="btn btn-primary" id="withDrawBtn">Withdraw</button>
     </section>
     <section id="addCustomer" class="container border border-2 my-3 d-none">
-        <form class="p-2">
-            <div class="mb-3">
+        <form class="p-2" id="addForm">
+            <!-- <div class="mb-3">
                 <label class="form-label">Account Number</label>
-                <input type="text" class="form-control" placeholder="Account Number">
-            </div>
+                <input type="text" class="form-control" placeholder="Account Number" name="accNum" id="accNum">
+            </div> -->
             <div class="mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control" placeholder="Name">
+                <input type="text" class="form-control" placeholder="Name" name="cName">
               </div>
               <div class="mb-3">
                 <label class="form-label">Balance</label>
-                <input type="text" class="form-control" placeholder="Balance">
+                <input type="text" class="form-control" placeholder="Balance" name="balance">
               </div>
               <input type="submit" class="btn btn-success" value="add Customer">
         </form>
