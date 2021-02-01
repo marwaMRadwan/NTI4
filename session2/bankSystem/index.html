@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+    <section class="container my-5 text-center">
+        <button class="btn btn-primary" id="addbBtn">
+            <span>Add Customer
+            </span>
+            </button>
+        <button class="btn btn-primary" id="showAllBtn">show All Customer</button>
+        <button class="btn btn-primary" id="showBtn">show Customer</button>
+        <button class="btn btn-primary" id="addBalanceBtn">Add Balance</button>
+        <button class="btn btn-primary" id="withDrawBtn">Withdraw</button>
+    </section>
+    <section id="addCustomer" class="container border border-2 my-3 d-none">
+        <form class="p-2">
+            <div class="mb-3">
+                <label class="form-label">Account Number</label>
+                <input type="text" class="form-control" placeholder="Account Number">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" placeholder="Name">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Balance</label>
+                <input type="text" class="form-control" placeholder="Balance">
+              </div>
+              <input type="submit" class="btn btn-success" value="add Customer">
+        </form>
+    </section>
+    <section id="allCustomers" class="container border border-2 my-3 d-none">
+        <table class="table">
+            <thead>
+                <th>id</th>
+                <th>Name</th>
+                <th>Balance</th>
+                <th>actions</th>
+            </thead>
+            <tbody>
+                <td>1</td>
+                <td>a</td>
+                <td>2000$</td>
+                <td>
+                    <button class ="btn btn-danger mx-2">delete</button>
+                    <button class ="btn btn-success mx-2">edit</button>
+                </td>
+            </tbody>
+        </table>
+    </section>
+    <section id = "searchForm" class="container border border-2 my-3 d-none">
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Account Number">
+        </div>
+    </section>
+    <section id="singleCustomer" class="container border border-2 my-3 d-none">
+        <div>
+            <span>1234456</span>
+            <h3>customer Name</h3>
+            <h4>2000$</h4>
+        </div>
+    </section>
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="customers.js"></script>
+</body>
+</html>

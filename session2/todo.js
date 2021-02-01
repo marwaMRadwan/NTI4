@@ -49,19 +49,40 @@ const addNewTask = function(id, title, content, type, status=false){
 const showAllTask = function(){
     console.log(tasks)
 }
-function getbyId (id) {
-    return tasks.find(x => x.id == id);
+const getbyId = function (id) {
+    return tasks.findIndex(task => task.id == id);
 }
-function getByTitle(title) {
+const getByTitle= function(title) {
     x = tasks.filter(task=>{
         return task.title==title
     })
     return x
 }
+const showTask = function(id){
+    console.log(tasks[getbyId(id)])
+}
+const editTask = function(searckKey, title, content, type, status){
+    index = getbyId(searckKey)
+    tasks[index] = { id:tasks[index].id, title:title, content, type, status}
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+const search = function(searchKey, type){
+    let tasks = tasks.filter(task=>{
+        return task[type]==searchKey
+    })
+    return tasks
+}
+const deleteTask = function(seachkey, type){
+    tasks = tasks.filter(task=>{
+        return task[type]!=seachkey
+    })
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+}
 // addNewTask(Date.now(),'mona','anbvcgjuiytrfghb','c')
-// showAllTask()
-console.log(getByTitle('ahmed'))
-
-https://www.javatpoint.com/javascript-tutorial
+// editTask(1612097140706, 'mohammed', 'mohammed edit', 't2', true)
+showAllTask()
+deleteTask('ahmed', 'title')
+showAllTask()
+//console.log(getByTitle('ahmed'))
 
 
