@@ -47,24 +47,79 @@
 // }, 1500)
 // console.log('after timeout')
 // callback (error , data ) =>
-const myCallBack = (num, cb) =>{
-    setTimeout(()=>{
-        if(typeof num == 'number'){
-            cb( num, undefined)
-        }
-        else{
-            cb(undefined,'Error data must be number')
-        }
-    }, 2000)
-}
+// const myCallBack = (num, cb) =>{
+//     setTimeout(()=>{
+//         if(typeof num == 'number'){
+//             cb( num, undefined)
+//         }
+//         else{
+//             cb(undefined,'Error data must be number')
+//         }
+//     }, 2000)
+// }
 
-myCallBack('5', ( data, error)=>{
-    if(error) console.log(error)
-    else console.log(data)
-})
+// myCallBack('5', ( data, error)=>{
+//     if(error) console.log(error)
+//     else console.log(data)
+// })
 //prommises
+// const myPromise=(num)=> {
+//     return new Promise((resolve, reject)=>{
+//         setTimeout(()=>{
+//             typeof num == 'number'?
+//                 resolve(num)
+//                 :
+//                 reject('error not a number')
+//         },3000)
+//      })
+// }
+    
+// myPromise(5)
+// .then(
+//     (response) => {
+//     return response+3
+//     }
+// )
+// .then(
+//     (data) => {
+//     console.log('2nd then')
+//     console.log(data)
+// })
+// .catch((e)=>{
+// console.log(e)
+// })
+
+
+// console.log('1')
+
+
 
 //async-await
+const myPromise=(num)=> {
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            typeof num == 'number'?
+                resolve(num)
+                :
+                reject('error not a number')
+        },3000)
+     })
+}
+
+const myCall = async () =>{
+    try{
+    x = await myPromise(5)
+    y = x+17
+    console.log(y)
+}
+catch(e){
+    console.log('ana fe catch ',e)
+}
+}
+
+myCall()
+
+
 
 
 
