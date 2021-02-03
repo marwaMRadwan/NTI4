@@ -1,0 +1,19 @@
+{
+  "name": "marwa",
+  "version": "3.0.5",
+  "description": "hello node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "hello"
+  },
+  "keywords": [
+    "nodejs",
+    "nti"
+  ],
+  "author": "marwa radwan",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "validator": "^13.5.2"
+  }
+}

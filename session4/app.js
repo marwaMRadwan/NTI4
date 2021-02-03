@@ -38,7 +38,14 @@ const getCorona = async() => {
         const data = await fetch('https://api.covid19api.com/summary')
         const jsonData = await data.json()
         const countries = jsonData.Countries
-        const headers = ['Country','NewConfirmed','TotalConfirmed','TotalDeaths','NewRecovered']
+        const headers = ['Country', 
+        'NewConfirmed',
+        'TotalConfirmed',
+        'NewDeaths',
+        'TotalDeaths',
+        'NewRecovered',
+        'TotalRecovered'
+        ]
         countries.forEach((country,i) => {
             tr = createNewElement(myTable, 'tr')
             createNewElement(tr, 'td', i+1)
