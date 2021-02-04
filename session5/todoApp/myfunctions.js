@@ -9,10 +9,13 @@ const loadData = () => {
     }
     return data
 }
+const saveTasks = (tasks)=>{
+    fs.writeFileSync('todo.json', JSON.stringify(tasks))
+}
 const addNewTask =(task)=>{
     data = loadData()
     data.push(task)
-    fs.writeFileSync('todo.json', JSON.stringify(data))
+    saveTasks(data)
 }
 module.exports={
     loadData,
