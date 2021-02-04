@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "request": "^2.88.2",
     "yargs": "^16.2.0"
   },
   "devDependencies": {},

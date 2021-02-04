@@ -16,8 +16,8 @@ const saveTasks = (tasks)=>{
 const addNewTask =(task)=>{
     const data = loadData()
     const duplicated = data.find((t)=> t.id === task.id)
-    if(!duplicated) data.push(task)
-    else return console.log('id used before')
+    if(duplicated) return console.log('id used before')
+    data.push(task)
     saveTasks(data)
 }
 const searchTaskByTitle = (title)=>{
@@ -36,25 +36,23 @@ const search = (id) =>{
     return index
 }
 const delTask =(id)=>{
-    const data=loadData()
     const index = search(id)
     if(index==-1) return console.log('not found')
+    const data=loadData()
     data.splice(index,1)
     saveTasks(data)
     console.log('deleted')
 }
 const editTask =(id,task) =>{
-    const data=loadData()
     const index = search(id)
     if(index==-1) return console.log('not found')
+    const data=loadData()
     //edit logic
     d = Object.keys(task)
     flag = false
     d.forEach(element => {
-        console.log('=>',task[element])
-        if(typeof task[element]=='string') {
-            task[element] = task[element].trim()
-        }
+    try{task[element] = task[element].trim()}
+    catch(e){}
      if(task[element]) {   
          data[index][element]= task[element]
          flag = true
