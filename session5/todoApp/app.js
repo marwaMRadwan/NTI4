@@ -2,7 +2,12 @@ const yargs = require('yargs')
 const myMethods = require('./myfunctions')
 yargs.command({
     command:'addTask',
+    aliases:['a'],
     builder:{
+        id:{
+            type:'number',
+            demandOption:true
+        },
         title:{
             type:'string',
             demandOption:true
@@ -14,6 +19,7 @@ yargs.command({
     },
     handler(argv){
         task= {
+            id:argv.id,//Date.now(),
             title: argv.title,
             content: argv.content
         }
@@ -22,14 +28,26 @@ yargs.command({
 })
 yargs.command({
     command:'delTask',
+    builder:{
+        id:{type:'number', demandOption:true}
+    },
     handler(argv){
-        console.log('test del')
+        myMethods.delTask(argv.id)
     }
 })
 yargs.command({
     command:'editTask',
+    builder:{
+        id:{type:'number', demandOption:true},
+        title:{type:'string'},
+        content:{type:'string'}
+    },
     handler(argv){
-        console.log('test edit')
+        task={
+            title:argv.title,
+            content:argv.content
+        }
+        myMethods.editTask(argv.id,task)
     }
 })
 yargs.command({
@@ -41,8 +59,15 @@ yargs.command({
 })
 yargs.command({
     command:'searchTask',
+    builder:{
+        title:{
+            demandOption:true,
+            type:'string'
+        }
+    },
     handler(argv){
-        console.log('test search')
+        result = myMethods.searchTaskByTitle(argv.title)
+        console.log(result)
     }
 })
 yargs.parse()
