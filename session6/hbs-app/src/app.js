@@ -22,5 +22,16 @@ app.get('', (req, res)=>{
 app.get('/about', (req,res)=>{
     res.render('about')
 })
+app.get('/service', (req, res)=>{
+    myServices = data.services
+    myarr = [1,2,3,4,5]
+    res.render('myServices', {myServices, myarr})
+})
 
+app.get('/albums', (req,res)=>{
+    data.getAlbums((err, albums)=>{
+        if(err) res.send(err)
+        else res.send(albums)
+    })
+})
 app.listen(PORT)
