@@ -15,5 +15,21 @@ app.set('views', myViewsFiles)
 hbs.registerPartials(myPartialsFiles)
 app.use(express.static(myPublicFiles))
 
-
+app.get('', (req, res)=>{
+    data.getAllPosts((err, response)=>{
+        let myRespone
+        if(err) myRespone = { error: err, data: false }
+        else myRespone = { error: false, data: response}
+        res.render('posts', myRespone)
+    })
+})
+app.get('/post/:id', (req,res)=>{
+    id = req.params.id
+    data.getSinglePost(id, (err, response)=>{
+        let myRespone
+        if(err) myRespone = {error: err, data:undefined}
+        else myRespone = {error:undefined, data:response}
+        res.render('single', myRespone)
+    })
+})
 app.listen(PORT)
