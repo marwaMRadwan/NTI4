@@ -23,6 +23,7 @@ getPostComments = (id, callback) =>{
         else callback (undefined, body)
     })
 }
+
 module.exports={
     getAllPosts,
     getPostComments,

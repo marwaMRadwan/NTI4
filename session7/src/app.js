@@ -27,8 +27,8 @@ app.get('/post/:id', (req,res)=>{
     id = req.params.id
     data.getSinglePost(id, (err, response)=>{
         let myRespone
-        if(err) myRespone = {error: err, data:undefined}
-        else myRespone = {error:undefined, data:response}
+        if(err) myRespone = {error: err, data:undefined, comment: undefined}
+        else myRespone = {error:undefined, data:response, comment:[]}
         res.render('single', myRespone)
     })
 })

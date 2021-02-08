@@ -10,9 +10,10 @@
         {{#with data}}
         <h3>{{title}}</h3>
         <p>{{body}}</p>
-        <a href="/post/{{id}}" class="btn btn-primary">more</a>
-        {{/data}}
+        {{/with}}
     </div>
     {{/if}}
 </section>
+
+{{>comments}}
 {{>footer}}
