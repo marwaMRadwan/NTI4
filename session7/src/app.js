@@ -27,9 +27,16 @@ app.get('/post/:id', (req,res)=>{
     id = req.params.id
     data.getSinglePost(id, (err, response)=>{
         let myRespone
-        if(err) myRespone = {error: err, data:undefined, comment: undefined}
-        else myRespone = {error:undefined, data:response, comment:[]}
-        res.render('single', myRespone)
+        if(err) myRespone = {error: err, data:undefined}
+        else{
+             myRespone = {error:undefined, data:response}
+            data.getPostComments(id, myRespone, (e, r)=>{
+                if(e) res.send(e)
+                else res.send({myRespone, r})
+            })
+            }
+//        res.send( myRespone)
+        
     })
 })
 app.listen(PORT)
