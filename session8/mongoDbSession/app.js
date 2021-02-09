@@ -1,9 +1,9 @@
 //npm i mongodb
-const { MongoClient, ObjectID} = require('mongodb')
 //const mongodb = require('mongodb')
 // const MongoClient = mongodb.MongoClient
 // const ObjectID = mongodb.ObjectID
 //console.log(new ObjectID())
+const { MongoClient, ObjectID} = require('mongodb')
 const myDBUrl = 'mongodb://127.0.0.1:27017'
 const dbName = "myNewG4Task"
 data = [
@@ -26,15 +26,15 @@ MongoClient.connect(
         const db = client.db(dbName)
         /*insert data */
 
-        db.collection('newCollection').insert(data, (err, result)=>{
-            if(err) return console.log(err)
-            console.log(`data inserted succesfully ${result.insertedCount} inserted`)
-        })
+        // db.collection('newCollection').insert(data, (err, result)=>{
+        //     if(err) return console.log(err)
+        //     console.log(`data inserted succesfully ${result.insertedCount} inserted`)
+        // })
 
         //get data
-        // db.collection('newCollection').find(
-        //     {_id :new ObjectID('602256c155a0b71f7c0a8dc0')})
-        //     .toArray((err, data)=>{console.log(data)})
+        db.collection('newCollection').find(
+            {})
+            .toArray((err, data)=>{console.log(data)})
 
         //         db.collection('newCollection').findOne(
         //     {_id :new ObjectID('602256c155a0b71f7c0a8dc0')},
