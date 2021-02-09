@@ -3,14 +3,19 @@ const { MongoClient, ObjectID} = require('mongodb')
 //const mongodb = require('mongodb')
 // const MongoClient = mongodb.MongoClient
 // const ObjectID = mongodb.ObjectID
-console.log(new ObjectID())
+//console.log(new ObjectID())
 const myDBUrl = 'mongodb://127.0.0.1:27017'
-const dbName = "myNewG4"
+const dbName = "myNewG4Task"
 data = [
-    {name:'a'},
-    {name:12, age:15},
-    {age:35},
-    {salary:500}
+    {name:'ahmed', age:25},
+    {name:'mohamed', age:7},
+    {name:'adam', age:8},
+    {name:'mario', age:23},
+    {name:'mona', age:50},
+    {name:'mazen', age:39},
+    {name:'hoda', age:28},
+    {name:'nouran', age:25},
+    {name:'marwa', age:35},
 ]
 MongoClient.connect(
     myDBUrl,
@@ -21,10 +26,10 @@ MongoClient.connect(
         const db = client.db(dbName)
         /*insert data */
 
-        // db.collection('newCollection').insert(data, (err, result)=>{
-        //     if(err) return console.log(err)
-        //     console.log(`data inserted succesfully ${result.insertedCount} inserted`)
-        // })
+        db.collection('newCollection').insert(data, (err, result)=>{
+            if(err) return console.log(err)
+            console.log(`data inserted succesfully ${result.insertedCount} inserted`)
+        })
 
         //get data
         // db.collection('newCollection').find(
@@ -48,18 +53,18 @@ MongoClient.connect(
 // db.collection('newCollection').find({x:{$exists:true}}).toArray((err, data)=>{
 //     console.log(data)
 // })
-db.collection('newCollection').updateMany(
-    {x:{$exists:true}},
-    {$inc:{x:1}}
-    )
-    .then((res)=>{console.log(res)})
-    .catch((err)=>console.log(err))
+// db.collection('newCollection').updateMany(
+//     {x:{$exists:true}},
+//     {$inc:{x:1}}
+//     )
+//     .then((res)=>{console.log(res)})
+//     .catch((err)=>console.log(err))
 
 
 
-db.collection('newCollection').deleteMany(
-    {x:{$exists:true}})
-    .then((res)=>{console.log(res)})
-    .catch((err)=>console.log(err))
+// db.collection('newCollection').deleteMany(
+//     {x:{$exists:true}})
+//     .then((res)=>{console.log(res)})
+//     .catch((err)=>console.log(err))
 
 })
