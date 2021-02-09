@@ -1,0 +1,21 @@
+{{>header}}
+{{>nav}}
+<button class="btn btn-success ml-5" id="chngLang">lang change</button>
+<section class="my-3 container">
+    {{#if error}}
+    <div class="alert alert-danger">
+        {{error}}
+    </div>
+    {{else}}
+    <div class="row">
+        {{#each data.data}}
+        <div class="col-md-3 col-12 border border-2">
+            <h3>{{this.title}}</h3>
+            <p>{{this.content}}</p>
+            <a href="/post/{{this.id}}" class="btn btn-primary">more</a>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+</section>
+{{>footer}}

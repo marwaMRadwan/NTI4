@@ -1,0 +1,19 @@
+{{>header}}
+{{>nav}}
+<section class="my-3 container">
+    {{#if error}}
+    <div class="alert alert-danger">
+        {{error}}
+    </div>
+    {{else}}
+    <div class="row">
+        {{#with data}}
+        <h3>{{title}}</h3>
+        <p>{{body}}</p>
+        {{/with}}
+    </div>
+    {{/if}}
+</section>
+
+{{>comments}}
+{{>footer}}
