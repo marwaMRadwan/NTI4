@@ -18,7 +18,7 @@ router.post('/addUserA',async(req,res)=>{
     catch(e){
         res.send(e.message)
     }
-    })
+})
 
 
 router.get('/test', (req,res)=>{
@@ -29,4 +29,13 @@ router.post('/testadd', (req,res)=>{
     res.send(req.body)
 })
 
+router.get('/allUsers', async(req, res)=>{
+    try{
+        users = await userModel.find()
+        res.send(users)
+    }
+    catch(e){
+        res.send(e.message)
+    }
+})
 module.exports=router
