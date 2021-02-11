@@ -6,10 +6,11 @@ router.post('/register', async(req, res)=>{
     user = new User(req.body)
     try{
         await user.save()
+        const token = await user.generateToken()
         res.send({
             status:1,
             message:'added',
-            data: user
+            data: {user, token}
         })
     }
     catch(e){
@@ -18,6 +19,17 @@ router.post('/register', async(req, res)=>{
             message:e.message,
             data:''
         })
+    }
+})
+
+router.post('/login', async(req,res)=>{
+    try{
+        user = await User.findUser(req.body.email, req.body.password)
+        const token = await user.generateToken()
+        res.send({user, token})
+    }
+    catch(e){
+        res.send(e.message)
     }
 })
 

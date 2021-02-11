@@ -1,0 +1,35 @@
+project => back apis express with mongoose
+frontend => angular (html,css)
+
+ecommerce
+2- raheeq
+13-fatma
+14-mario
+5-habiba
+-----------------
+3-ahmed
+9-rahma
+-----------------
+library store
+4- amany
+1-aya
+-----------------
+6-hossam
+bookstore
+-----------------
+musical gal
+7-esraa
+-----------------
+online library
+8-hanan
+------------------
+Asar
+10-samaa
+------------------
+ERP
+11-diaa
+12-abd allah
+15-mohammed
+-----------------
+talbat
+16-hend

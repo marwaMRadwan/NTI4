@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 const userSchema = new mongoose.Schema({
     fname:{
         type:String,
@@ -26,7 +27,12 @@ const userSchema = new mongoose.Schema({
     },
     age:{
         type:Number
-    }
+    },
+    tokens:[
+        {
+            token: { type:String } 
+        }
+    ]
 },{
     timestamps:true
 })
@@ -43,5 +49,21 @@ userSchema.pre('save', async function(next){
         user.password = await bcrypt.hash(user.password, 12)
     next()
 })
+
+userSchema.methods.generateToken = async function(){
+    const user = this
+    const token = jwt.sign({_id: user._id.toString()}, '123456')
+    user.tokens = user.tokens.concat({token})
+    await user.save()
+    return token
+}
+
+userSchema.statics.findUser = async (email,password)=>{
+    const user = await User.findOne({email})
+    if(!user) throw new Error('invalid email')
+    flag = await bcrypt.compare(password, user.password)
+    if(!flag) throw new Error('invalid pass')
+    return user
+}
 const User = mongoose.model('User', userSchema)
 module.exports =User
