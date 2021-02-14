@@ -13,6 +13,5 @@ const authMe = async (req, res, next)=>{
    catch(e){
        res.send({error: 'unauthorized'})
    }
-    
 }
 module.exports = authMe

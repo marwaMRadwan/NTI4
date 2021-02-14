@@ -38,7 +38,27 @@ router.get('/x', mymiddleware, async(req,res)=>{
     res.send('ay 7aga')
 })
 router.post('/logout',authMe,async(req,res)=>{
-
+try{ 
+    req.user.tokens = req.user.tokens.filter(single=>{
+        console.log(single.token)
+        return single.token != req.token
+    })
+    await req.user.save()
+    res.send('logged out')
+}
+catch(e){
+res.send('error')
+}
+})
+router.post('/logoutAll', async(req,res)=>{
+    try{
+        req.user.tokens=[]
+        await req.user.save()
+        res.send('loged out all')
+    }
+    catch(e){
+        res.send(e)
+    }
 })
 router.get('/profile', authMe, async(req,res)=>{
     res.send(req.user)
