@@ -1,0 +1,10 @@
+users has tasks
+user => name, email, password, phone, age, image, token, timestamps, addresses =[{type, content}], type(admin, user), status
+tasks => description,status, user_id, sub tasks =>[]
+=> paggination, sort, filter status
+=> send email
+user=> register, login, logout, logout all, me(profile), edit profile, edit password, deactivate profile, remove user , change types
+
+=> admin assign task for user, add task , change task user
+
+=>add task for me, change status, show task by status
