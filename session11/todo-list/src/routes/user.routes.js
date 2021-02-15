@@ -2,6 +2,7 @@ const express = require('express')
 const User = require('../models/user.model')
 const auth = require('../middleware/auth')
 const multer = require('multer')
+const bcrypt = require('bcryptjs')
 const router = new express.Router()
 
 router.post('/user', async(req, res)=>{
@@ -90,40 +91,72 @@ router.get('/user/me',auth, async(req,res)=>{
     })
 })
 router.post('/user/add_address', auth, async(req, res)=>{
-    try{
     address = {
         addr_type:req.body.addr_type,
         details: req.body.details
     }
-    req.user.addresses = req.user.addresses.concat({address})
+    try{
+        if(!req.body.addr_type || !req.body.details) throw new Error('missing address details')
+    req.user.addresses = req.user.addresses.concat(address)
     await req.user.save()
+    res.status(200).send({
+        error:null,
+        apiStatus:true,
+        data:{user: req.user},
+        message:'address added'
+    })
 }
 catch(e){
-
+res.status(400).send({
+    error:e.message,
+    apiStatus:false,
+    data:'',
+    message:'address add problem'
+})
 }
 })
-router.post('/user/changeStatus',auth, async(req, res)=>{
+router.post('/user/me/changeStatus',auth, async(req, res)=>{
     try{
     req.user.status = !req.user.status
     await req.user.save()
-}catch(e){
-
+    res.status(200).send({
+        error:null,
+        apiStatus:true,
+        data:{user: req.user},
+        message:'address added'
+    })
 }
+catch(e){
+res.status(400).send({
+    error:e.message,
+    apiStatus:false,
+    data:'',
+    message:'address add problem'
 })
-router.post('/user/imgChange', auth, async(req, res)=>{
-
+}
 })
 router.post('/user/changePassword', auth, async(req, res)=>{
     try{
+        if(!req.body.old_pass || !req.body.new_pass) throw new Error('invalid data')
         const matched = await bcrypt.compare(req.body.old_pass, req.user.password)
         if(!matched) throw new Error('invalid user old password')
         req.user.password = req.body.new_pass
         await req.user.save()
-        res.send('done')
+        res.status(200).send({
+            error:null,
+            apiStatus:true,
+            data:{user: req.user},
+            message:'address added'
+        })
     }
     catch(e){
-
-    }
+    res.status(400).send({
+        error:e.message,
+        apiStatus:false,
+        data:'',
+        message:'address add problem'
+    })
+        }
 })
 router.patch('/user/me', auth, async(req, res)=>{
     const allowedUpdates =['name', 'phone', 'age']
@@ -152,4 +185,60 @@ router.patch('/user/me', auth, async(req, res)=>{
     }
 })
 
+router.delete('/user/me', auth, async(req, res)=>{
+    try{
+        await req.user.remove()
+        res.status(200).send({
+            error: null,
+            apiStatus:true,
+            data: 'deleted'
+        })
+    }
+    catch(error){
+        res.status(400).send({
+            error: error.message,
+            apiStatus:false,
+            data: 'unauthorized user'
+        })
+    }
+})
+
+let storage = multer.diskStorage({
+    destination:function(req, file, cb) { cb(null, 'images')},
+    limits:{fileSize:100},
+    fileFilter:function(req, file, cb){
+        if(!file.originalname.match(/\.(jpg|png)$/)){
+            console.log('egehyjghdgh')
+            return cb(new Error('image Error'))
+        }
+        cb(undefined, true)
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+    
+})
+let upload = multer({storage})
+
+router.post('/user/imgChange', auth, upload.single('profile'), async(req, res)=>{
+try{res.send('done')
+}catch(e){res.send(e.message)}
+})
 module.exports=router
+
+
+//upload as buffer
+// const upload = multer({
+//     limits:{
+//         fileSize: 100000
+//     },
+//     fileFilter(req, file, cb){
+//         if(!file.originalname.match(/\.(jpg|png)$/)){
+//             return cb(new Error('image Error'))
+//         }
+//         cb(undefined, true)
+//     }
+// })
+// //inside route
+// buffer = req.file.buffer
+//     req.user.image=buffer
