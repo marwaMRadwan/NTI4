@@ -8,3 +8,21 @@ user=> register, login, logout, logout all, me(profile), edit profile, edit pass
 => admin assign task for user, add task , change task user
 
 =>add task for me, change status, show task by status
+
+
+
+    try{
+
+        res.status(200).send({
+            error: null,
+            apiStatus:true,
+            data: {user, token}
+        })
+    }
+    catch(error){
+        res.status(400).send({
+            error: error.message,
+            apiStatus:false,
+            data: 'unauthorized user'
+        })
+    }
