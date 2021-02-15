@@ -1,6 +1,6 @@
 users has tasks
 user => name, email, password, phone, age, image, token, timestamps, addresses =[{type, content}], type(admin, user), status
-tasks => description,status, user_id, sub tasks =>[]
+tasks => description,status, user_id, sub tasks =>[], end time
 => paggination, sort, filter status
 => send email
 user=> register, login, logout, logout all, me(profile), edit profile, edit password, deactivate profile, remove user , change types

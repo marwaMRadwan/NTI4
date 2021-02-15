@@ -102,7 +102,20 @@ userSchema.pre('remove', async function(next){
     next()
 })
 //generate token 
+userSchema.methods.generateToken = async function(){
+    const user = this
+    const token = jwt.sign({_id: user._id.toString()}, process.env.JWTKEY)
+    user.tokens = user.tokens.concat({token})
+    await user.save()
+    return token
+}
 // login
-
+userSchema.statics.findUserByCredentials =  async(email, password)=>{
+    const user = await User.findOne({email})
+    if(!user) throw new Error('invalid email')
+    const matched = await bcrypt.compare(password, user.password)
+    if(!matched) throw new Error('invalid password')
+    return user
+}
 const User = mongoose.model('User', userSchema)
 module.exports = User
