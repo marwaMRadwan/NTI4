@@ -205,25 +205,26 @@ router.delete('/user/me', auth, async(req, res)=>{
 
 let storage = multer.diskStorage({
     destination:function(req, file, cb) { cb(null, 'images')},
-    limits:{fileSize:100},
-    fileFilter:function(req, file, cb){
+    limits:{fileSize:1},
+    filename:function(req, file, cb) {
         if(!file.originalname.match(/\.(jpg|png)$/)){
-            console.log('egehyjghdgh')
-            return cb(new Error('image Error'))
+            return cb(new Error('error'))
         }
-        cb(undefined, true)
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now())
+      cb(null, Date.now()+'.'+file.originalname.split('.').pop())
     }
     
 })
-let upload = multer({storage})
+let upload = multer({ storage })
 
 router.post('/user/imgChange', auth, upload.single('profile'), async(req, res)=>{
-try{res.send('done')
+    req.user.image = `${req.file.destination}/${req.file.filename}`
+    await req.user.save()
+try{res.send({
+    user:req.user
+})
 }catch(e){res.send(e.message)}
 })
+
 module.exports=router
 
 
