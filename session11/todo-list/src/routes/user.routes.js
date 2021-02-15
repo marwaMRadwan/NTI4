@@ -82,5 +82,74 @@ router.post('/user/logoutAll',auth, async(req,res)=>{
     }
 
 })
+router.get('/user/me',auth, async(req,res)=>{
+    res.status(200).send({
+        error: null,
+        apiStatus:true,
+        data: {user:req.user}
+    })
+})
+router.post('/user/add_address', auth, async(req, res)=>{
+    try{
+    address = {
+        addr_type:req.body.addr_type,
+        details: req.body.details
+    }
+    req.user.addresses = req.user.addresses.concat({address})
+    await req.user.save()
+}
+catch(e){
+
+}
+})
+router.post('/user/changeStatus',auth, async(req, res)=>{
+    try{
+    req.user.status = !req.user.status
+    await req.user.save()
+}catch(e){
+
+}
+})
+router.post('/user/imgChange', auth, async(req, res)=>{
+
+})
+router.post('/user/changePassword', auth, async(req, res)=>{
+    try{
+        const matched = await bcrypt.compare(req.body.old_pass, req.user.password)
+        if(!matched) throw new Error('invalid user old password')
+        req.user.password = req.body.new_pass
+        await req.user.save()
+        res.send('done')
+    }
+    catch(e){
+
+    }
+})
+router.patch('/user/me', auth, async(req, res)=>{
+    const allowedUpdates =['name', 'phone', 'age']
+    const updates = Object.keys(req.body)
+    const validateEdits = updates.every(update=> allowedUpdates.includes(update))
+    if(!validateEdits) return res.status(400).send({
+        apiStatus:false,
+        message:'unavailable updates',
+        error:true
+    })
+    try{
+        updates.forEach(update=>req.user[update] = req.body[update])
+        await req.user.save()
+        res.status(200).send({
+            error: null,
+            apiStatus:true,
+            data: {user: req.user}
+        })
+    }
+    catch(error){
+        res.status(400).send({
+            error: error.message,
+            apiStatus:false,
+            data: 'unable to update'
+        })
+    }
+})
 
 module.exports=router
