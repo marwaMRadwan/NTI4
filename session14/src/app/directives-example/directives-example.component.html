@@ -1,0 +1,67 @@
+<!-- <section class="container my-3">
+    <h3>ngfor</h3>
+    <p *ngFor="let element of arr">
+        {{element}}
+    </p>
+</section> -->
+
+<!-- <section class="container">
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th [attr.rowSpan]="'2'" class="align-middle">id</th>
+                <th [attr.rowSpan]="'2'" class="align-middle">Name</th>
+                <th [attr.rowSpan]="'2'" class="align-middle">UserName</th>
+                <th [attr.rowSpan]="'2'" class="align-middle">Email</th>
+                <th [attr.colSpan]="'6'" class="align-middle">Address</th>
+                <th [attr.rowSpan]="'2'" class="align-middle">Phone</th>
+                <th [attr.rowSpan]="'2'" class="align-middle">WebSite</th>
+                <th [attr.colSpan]="'3'" class="align-middle">Company</th>
+            </tr>
+            <tr>
+                <th>street</th>
+                <th>suite</th>
+                <th>city</th>
+                <th>zip code</th>
+                <th>lat</th>
+                <th>lng</th>
+                <th>name</th>
+                <th>catch phrase</th>
+                <th>bs</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; let i=index; let o=odd; let e=even"
+            [ngClass]="{odd:o, even:e}"
+            > 
+                <td>{{i}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.address.street}}</td>
+                <td>{{user.address.suite}}</td>
+                <td>{{user.address.city}}</td>
+                <td>{{user.address.zipcode}}</td>
+                <td>{{user.address.geo.lat}}</td>
+                <td>{{user.address.geo.lng}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.website}}</td>
+                <td>{{user.company.name}}</td>
+                <td>{{user.company.catchPhrase}}</td>
+                <td>{{user.company.bs}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section> -->
+
+
+<div *ngIf="status; then thenBlock else elseBlock">
+    text
+</div>
+<ng-template #elseBlock>
+    <div>else txt</div>
+</ng-template>
+<ng-template #thenBlock>
+    <div>then txt</div>
+</ng-template>
+<span (click)="handelClick()">change</span>

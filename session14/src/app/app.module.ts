@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlaygroundComponent } from './playground/playground.component';
+import { DirectivesExampleComponent } from './directives-example/directives-example.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlaygroundComponent
+    PlaygroundComponent,
+    DirectivesExampleComponent
   ],
   imports: [
     BrowserModule,
