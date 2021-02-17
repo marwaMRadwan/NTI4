@@ -1,0 +1,23 @@
+-new application:
+ng new appName
+- app component html => empty keep only <router-link>
+-install bootstrap:
+    https://getbootstrap.com/
+    inside terminal:
+    npm install bootstrap@next
+    inside angular.json add bootstrap paths
+    * inside build object(line 26)
+    add              
+        "node_modules/bootstrap/dist/css/bootstrap.min.css",
+    inside styles
+    * and
+        "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+    inside scripts
+-fontawsome
+    https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers
+    inside terminal
+    npm install --save @fortawesome/fontawesome-free
+    add inside angular.json 
+        "node_modules/@fortawesome/fontawesome-free/css/all.css",
+* run application
+    ng s -o (-o auto open browser)
