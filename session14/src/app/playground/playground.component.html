@@ -1,0 +1,71 @@
+<section class="container">
+    <h3>Interpolation</h3>
+    {{name}}<br>
+    {{status?"x":"y"}}<br>
+    {{5+3}} <br>
+    {{name + ' '+ status}}<br>
+    {{hello()}}<br>
+    {{getName()}}<br>
+    {{user.name + ' ' + user.age}}<br>
+    <a href="/{{id}}">link</a><br>
+    <h3>template refrence</h3>
+    <input (keyup)="0" #temp>
+    <p class="{{name}}">{{temp.value}}</p>
+
+</section>
+
+<section class="container py-5">
+    <h3 [innerHTML]="bind2"></h3>
+    <button class="btn btn-primary" [disabled]="status">my button</button>
+    <table class="table table-bordered table-dark">
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td [attr.colSpan]="colsNo">hh</td>
+        </tr>
+    </tbody>
+    </table>
+    <div 
+    [style.width.px]="'300'" 
+    [style.height.px]="'300'" 
+    [style.background]="'blue'"
+    [className]= "cStatus? 'myC' : 'err'"
+    >hello</div>
+</section>
+
+<section class="my-3 p-2 container">
+    <h3>Event binding</h3>
+    <button class="btn btn-primary" (click)="changeCStatus()">change class</button>
+<!-- <input (input)="handeleMyInput($event)" class="form-control">
+{{myInputData}} -->
+
+<input (keyup.enter)="handeleMyInput($event)"
+(keyup.escape)="handelEsc($event)">
+{{myInputData}}
+</section>
+
+<section class="m-5 ">
+    <h3>
+        two way binding
+    </h3>
+    <input [(ngModel)]="twoWay">
+
+    inputted data {{twoWay}}
+
+</section>
+
+
+<section class="container border border-3">
+    <input placeholder="rectangle h" [(ngModel)]="rectH">
+    <input placeholder="rectangle w" [(ngModel)]="rectW">
+    <div 
+    [style.background]="'red'"
+    [style.width.px]="rectW"
+    [style.height.px]="rectH"    
+    ></div>
+</section>
+

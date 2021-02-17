@@ -21,3 +21,5 @@ ng new appName
         "node_modules/@fortawesome/fontawesome-free/css/all.css",
 * run application
     ng s -o (-o auto open browser)
+*to generate new component
+    ng g c cName
