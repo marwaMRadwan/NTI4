@@ -5,12 +5,10 @@ export interface User {
     phone:string
     age:number
     image?:string
-    addresses:[
-        {
-            addr_type:string,
-            details:string
-        }
-    ],
+    addresses:{
+        addr_type:string,
+        details:string
+    },
     user_type:string
     status?:boolean
     tokens?:[

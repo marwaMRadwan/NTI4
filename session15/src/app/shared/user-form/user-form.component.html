@@ -1,12 +1,16 @@
+<div class="alert alert-success" *ngIf="msg!=''">
+    {{msg}}
+</div>
+
 <form #register="ngForm" (ngSubmit)="handelRegister(register)"> 
-    <input placeholder="name" class="form-control" name="name" ngModel>
-    <input placeholder="email" class="form-control" name="email" ngModel>
-    <input placeholder="password" class="form-control" name="password" ngModel>
-    <input placeholder="phone" class="form-control" name="phone" ngModel>
-    <input placeholder="age" class="form-control" name="age"  ngModel>
-    <input placeholder="address type" class="form-control" name="addr_type" ngModel>
-    <input placeholder="address details" class="form-control" name="details" ngModel>
-    <select name="user_role" ngModel>
+    <input placeholder="name" class="form-control" name="name" [(ngModel)]="user.name">
+    <input placeholder="email" class="form-control" name="email" [(ngModel)]="user.email">
+    <input placeholder="password" class="form-control" name="password" [(ngModel)]="user.password">
+    <input placeholder="phone" class="form-control" name="phone" [(ngModel)]="user.phone">
+    <input placeholder="age" class="form-control" name="age"  [(ngModel)]="user.age">
+    <input placeholder="address type" class="form-control" name="addr_type" [(ngModel)]="user.addresses.addr_type">
+    <input placeholder="address details" class="form-control" name="details" [(ngModel)]="user.addresses.details">
+    <select name="user_type" [(ngModel)]="user.user_type">
         <option value="Admin">Admin</option>
         <option value="provider">provider</option>
         <option value="user">user</option>
