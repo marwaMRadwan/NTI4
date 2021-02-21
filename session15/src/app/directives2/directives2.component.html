@@ -1,0 +1,29 @@
+<input type="text" [(ngModel)]="factor">
+
+<br>
+
+{{today|date:'M/d/yyyy, h:mm a'}}
+<br>
+{{data|json}}
+{{data.name|uppercase}}
+<p>directives2 works!</p>
+<input type="text" [(ngModel)]="month">
+{{month}}
+
+
+<div [ngSwitch]= "month">
+    <p *ngSwitchCase=""></p>
+    <p *ngSwitchCase="1">jan</p>
+    <p *ngSwitchCase="2">feb</p>
+    <p *ngSwitchCase="3">mar</p>
+    <p *ngSwitchCase="4">apr</p>
+    <p *ngSwitchCase="5">jan</p>
+    <p *ngSwitchCase="6">jan</p>
+    <p *ngSwitchCase="7">jan</p>
+    <p *ngSwitchCase="8">jan</p>
+    <p *ngSwitchCase="9">jan</p>
+    <p *ngSwitchCase="10">jan</p>
+    <p *ngSwitchCase="11">jan</p>
+    <p *ngSwitchCase="12">jan</p>
+    <p *ngSwitchDefault>enta bthzr</p>
+</div>

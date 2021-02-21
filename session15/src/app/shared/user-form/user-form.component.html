@@ -1,0 +1,15 @@
+<form #register="ngForm" (ngSubmit)="handelRegister(register)"> 
+    <input placeholder="name" class="form-control" name="name" ngModel>
+    <input placeholder="email" class="form-control" name="email" ngModel>
+    <input placeholder="password" class="form-control" name="password" ngModel>
+    <input placeholder="phone" class="form-control" name="phone" ngModel>
+    <input placeholder="age" class="form-control" name="age"  ngModel>
+    <input placeholder="address type" class="form-control" name="addr_type" ngModel>
+    <input placeholder="address details" class="form-control" name="details" ngModel>
+    <select name="user_role" ngModel>
+        <option value="Admin">Admin</option>
+        <option value="provider">provider</option>
+        <option value="user">user</option>
+    </select>
+    <button type="submit">Add user</button>
+</form>
