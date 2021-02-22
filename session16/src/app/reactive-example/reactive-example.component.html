@@ -1,0 +1,10 @@
+<p>reactive-example works!</p>
+<form class="container" [formGroup]="myForm" (ngSubmit)="handelForm()">
+    <input class="form-control" formControlName="fname">
+    <div *ngIf="myForm.controls.fname?.invalid">
+        invalid
+    </div>
+    <input class="form-control" formControlName="lname">
+    <input class="form-control" formControlName="email">
+    <button type="submit">submit</button>
+</form>

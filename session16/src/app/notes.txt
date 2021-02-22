@@ -1,0 +1,16 @@
+input => done
+output
+template driven form => validation =>done
+reactive form
+routing
+http client
+life cycle component: => done
+    - constructor
+    - ngOnChanges
+    - ngOnInit
+    - ngDoCheck
+      - ngAfterContentInit
+      - ngAfterContentChecked
+      - ngAfterViewInit
+      - ngAfterViewChecked
+    - ngOnDestory

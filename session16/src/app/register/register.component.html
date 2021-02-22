@@ -1,0 +1,30 @@
+<section class="container">
+<div class="alert alert-success" *ngIf="msg!=''">
+    {{msg}}
+</div>
+valid status : {{register.valid}}
+<br>
+<form #register="ngForm" (ngSubmit)="handelRegister(register)"> 
+    <input placeholder="name" class="form-control" name="name" #name="ngModel" [(ngModel)]="user.name" required minlength=5 maxlength=15 pattern="^[a-zA-Z]+$" >
+    <div *ngIf="name?.invalid && (name?.touched||name?.dirty)" class= "alert alert-danger">
+        <p *ngIf="name.errors?.required">
+            name is required
+        </p>
+        <p *ngIf="name.errors?.minlength">
+            minmum length is {{name.errors?.minlength?.requiredLength}}
+        </p>
+    </div>
+    <input placeholder="email" class="form-control" name="email" [(ngModel)]="user.email" email required>
+    <input placeholder="password" class="form-control" name="password" [(ngModel)]="user.password">
+    <input placeholder="phone" class="form-control" name="phone" [(ngModel)]="user.phone">
+    <input placeholder="age" class="form-control" name="age"  [(ngModel)]="user.age">
+    <input placeholder="address type" class="form-control" name="addr_type" [(ngModel)]="user.addresses.addr_type">
+    <input placeholder="address details" class="form-control" name="details" [(ngModel)]="user.addresses.details">
+    <select name="user_type" [(ngModel)]="user.user_type" class="form-control">
+        <option value="Admin">Admin</option>
+        <option value="provider">provider</option>
+        <option value="user">user</option>
+    </select>
+    <button type="submit" [disabled]="register.invalid" class="btn btn-success">Add user</button>
+</form>
+</section>
