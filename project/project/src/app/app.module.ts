@@ -7,13 +7,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginFormComponent } from './shared/login-form/login-form.component';
 import { RegisterFormComponent } from './shared/register-form/register-form.component';
+import { Err404Component } from './err404/err404.component';
+import { AllproComponent } from './allpro/allpro.component';
+import { SingleComponent } from './single/single.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    Err404Component,
+    AllproComponent,
+    SingleComponent
   ],
   imports: [
     BrowserModule,
