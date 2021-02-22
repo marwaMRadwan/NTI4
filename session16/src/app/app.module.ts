@@ -8,6 +8,7 @@ import { ChildComponent } from './child/child.component';
 import { PlaygroundComponent } from './playground/playground.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveExampleComponent } from './reactive-example/reactive-example.component';
+import { FormBuilderexComponent } from './form-builderex/form-builderex.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ReactiveExampleComponent } from './reactive-example/reactive-example.co
     ChildComponent,
     PlaygroundComponent,
     RegisterComponent,
-    ReactiveExampleComponent
+    ReactiveExampleComponent,
+    FormBuilderexComponent
   ],
   imports: [
     BrowserModule,

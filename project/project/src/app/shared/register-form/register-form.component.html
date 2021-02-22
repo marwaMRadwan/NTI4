@@ -1,0 +1,17 @@
+<h2 class="text-center">Register</h2>
+<div class="alert alert-success" ></div>
+<form #register="ngForm"> 
+    <input placeholder="name" class="form-control" name="name" >
+    <input placeholder="email" class="form-control" name="email">
+    <input placeholder="password" class="form-control" name="password">
+    <input placeholder="phone" class="form-control" name="phone">
+    <input placeholder="age" class="form-control" name="age">
+    <input placeholder="address type" class="form-control">
+    <input placeholder="address details" class="form-control">
+    <select name="user_type" class="form-control">
+        <option value="Admin">Admin</option>
+        <option value="provider">provider</option>
+        <option value="user">user</option>
+    </select>
+    <button type="submit">Add user</button>
+</form>

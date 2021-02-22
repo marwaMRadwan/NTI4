@@ -1,7 +1,7 @@
 input => done
 output
 template driven form => validation =>done
-reactive form
+reactive form => done
 routing
 http client
 life cycle component: => done
