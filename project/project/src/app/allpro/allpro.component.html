@@ -1,5 +1,25 @@
-<p>allpro works!</p>
+<section class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+            <th>userId</th>
+            <th>id</th>
+            <th>title</th>
+            <th>body</th>
+            <th>action</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor= "let post of allData">
+                <td>{{post.userId}}</td>
+                <td>{{post.id}}</td>
+                <td>{{post.title}}</td>
+                <td>{{post.body}}</td>
+                <td>
+<button [routerLink]="post.id">more</button>
 
-<a routerLink="/1">1</a><br>
-<a routerLink="2">2</a><br>
-<a routerLink="3">3</a><br>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

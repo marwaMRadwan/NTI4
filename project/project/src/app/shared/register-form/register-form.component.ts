@@ -8,6 +8,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./register-form.component.css']
 })
 export class RegisterFormComponent implements OnInit {
+  flag :any = null
   registerForm = new FormGroup({
     name:new FormControl('',[Validators.required]),
     email:new FormControl('', [Validators.required, Validators.email]),
@@ -34,10 +35,13 @@ export class RegisterFormComponent implements OnInit {
   get details(){return this.registerForm.get('address').get('details')}
   get user_type(){return this.registerForm.get('user_type')}
   handelRegister(){
-    console.log(this.registerForm.value)
-    this.userData = this.registerForm.value
-    this._user.registerUser(this.userData).subscribe(res=>{
-      console.log(res)
-    })
+    if(this.registerForm.valid){
+      this.userData = this.registerForm.value
+      this._user.registerUser(this.userData).subscribe(
+        res=>{ this.flag = true},
+        err=>{this.flag= false},
+        ()=>{console.log(3)}   
+      )
   }
+}
 }

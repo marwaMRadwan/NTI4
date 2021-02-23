@@ -1,5 +1,7 @@
 <h2 class="text-center">Register</h2>
-<div class="alert alert-success" ></div>
+<div [ngClass]="flag?'alert alert-success':'alert alert-danger'" *ngIf="flag!=null">
+    {{flag?'registered':'error accoured'}}
+</div>
 <form [formGroup]="registerForm" (ngSubmit)="handelRegister()">  
     <input placeholder="name" class="form-control my-3" formControlName="name"    
     [ngClass]="(name?.invalid && (name?.touched || name?.dirty))?'err':''"
