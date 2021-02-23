@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,8 @@ import { RegisterFormComponent } from './shared/register-form/register-form.comp
 import { Err404Component } from './err404/err404.component';
 import { AllproComponent } from './allpro/allpro.component';
 import { SingleComponent } from './single/single.component';
+import { UserInterceptor } from './user.interceptor';
+import { ProfileComponent } from './shared/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { SingleComponent } from './single/single.component';
     RegisterFormComponent,
     Err404Component,
     AllproComponent,
-    SingleComponent
+    SingleComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,13 @@ import { SingleComponent } from './single/single.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+provide:HTTP_INTERCEPTORS,
+useClass:UserInterceptor,
+multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

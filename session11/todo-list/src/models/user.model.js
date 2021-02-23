@@ -71,7 +71,7 @@ const userSchema = new mongoose.Schema({
     {timestamps:true}
 )
 //virtual relation
-userSchema.virtual('myList', {
+userSchema.virtual('tasks', {
     ref:'Task',
     localField: '_id',
     foreignField:'user_id'

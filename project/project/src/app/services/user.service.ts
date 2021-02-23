@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
   commonUrl = 'http://localhost:3000'
+  public token =null
   constructor(private _http:HttpClient) { }
 
   registerUser(userData: User):Observable<any>{
@@ -23,6 +24,6 @@ export class UserService {
     return this._http.post(`${this.commonUrl}/logoutAll`, null)
   }
   profile():Observable<any>{
-    return this._http.get(`${this.commonUrl}/me`)
+    return this._http.get(`${this.commonUrl}/user/me`)
   }
 }

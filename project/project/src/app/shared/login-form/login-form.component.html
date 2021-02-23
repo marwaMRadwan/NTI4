@@ -1,2 +1,15 @@
 <h2 class="text-center">login</h2>
-            
+<form [formGroup]="loginForm" (ngSubmit)="handelLogin()">  
+    <input placeholder="email" class="form-control my-3" formControlName="email"
+    [ngClass]="(email?.invalid && (email?.touched || email?.dirty))?'err':''">
+    <div class="alert alert-danger" *ngIf="email?.invalid && (email?.touched || email?.dirty)">
+        <div *ngIf="email.errors?.required">
+            email required
+        </div>
+        <div *ngIf="email.errors?.email">
+            email value failed
+        </div>
+    </div>
+    <input placeholder="password" class="form-control my-3" formControlName="password">
+    <button type="submit" class="btn btn-success">Add user</button>
+</form>
