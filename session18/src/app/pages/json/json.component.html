@@ -1,0 +1,16 @@
+<section class="container">
+    <div class="row d-flex justifuy-content-center">
+        <div class="col-md-3 col-12 m-2 p-2 border border-3" 
+        *ngFor="let content of returnedArray">
+            <h3>{{content.first_name}}</h3>
+            <h4>{{content.last_name}}</h4>
+            <h4>{{content.email}}</h4>
+            <h4>{{content.gender}}</h4>
+        </div>
+    </div>
+    <pagination [totalItems]="contentArray.length" 
+    (pageChanged)="pageChanged($event)" [itemsPerPage]="items"
+    ></pagination>
+
+</section>
+

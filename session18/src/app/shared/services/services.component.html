@@ -1,0 +1,11 @@
+<section class="container-fluid my-5">
+    <h2 class="text-center">Services</h2>
+    <div class="row d-flex justify-content-center">
+        <article class="col-md-3 col-12 border border-2 text-center p-3 m-2" *ngFor="let s of services">
+            <i class="fab fa-{{s.icon}} fa-5x"></i>
+            <h3>{{s.title}}</h3>
+            <p>{{s.content}}</p>
+        </article>
+
+    </div>
+</section>

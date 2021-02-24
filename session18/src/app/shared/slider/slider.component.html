@@ -1,0 +1,10 @@
+<carousel>
+
+  <slide *ngFor="let s of sliders">
+    <img [src]="s.img" [alt]="s.title" style="display: block; width: 100%;">
+    <div class="carousel-caption d-none d-md-block">
+      <h3 class="text-dark">{{s.title}}</h3>
+      <p class="text-dark">{{s.content}}</p>
+    </div>
+  </slide>
+</carousel>
