@@ -1,5 +1,5 @@
 {
-  "name": "session18",
+  "name": "session19",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,10 +19,6 @@
     "@angular/platform-browser": "~10.1.6",
     "@angular/platform-browser-dynamic": "~10.1.6",
     "@angular/router": "~10.1.6",
-    "@fortawesome/fontawesome-free": "^5.15.2",
-    "ngx-bootstrap": "^6.2.0",
-    "ngx-pagination": "^5.0.0",
-    "ngx-toastr": "^13.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
