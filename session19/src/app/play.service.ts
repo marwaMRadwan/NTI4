@@ -5,7 +5,8 @@ import { observable, Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class PlayService {
-
+public data =[]
+  public isLogged = false
   constructor() { }
 
   x():Observable<any>{

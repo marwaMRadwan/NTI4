@@ -111,11 +111,16 @@ userSchema.methods.generateToken = async function(){
 }
 // login
 userSchema.statics.findUserByCredentials =  async(email, password)=>{
+    try{
     const user = await User.findOne({email})
     if(!user) throw new Error('invalid email')
     const matched = await bcrypt.compare(password, user.password)
     if(!matched) throw new Error('invalid password')
     return user
+    }
+    catch(e){
+        return e
+    }
 }
 const User = mongoose.model('User', userSchema)
 module.exports = User
