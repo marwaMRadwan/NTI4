@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ChangeimgComponent } from './changeimg/changeimg.component';
 import { LoginComponent } from './login/login.component';
+import { UserInterceptor } from './interceptor/user.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,9 @@ FormsModule,
             }
         })
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:UserInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
